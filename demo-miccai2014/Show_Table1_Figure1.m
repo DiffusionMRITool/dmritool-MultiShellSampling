@@ -41,16 +41,9 @@ radius_incremental_gEEM(4) = CoveringRadius([direction_1; direction_2; direction
 fprintf('%20s\t%10.1f\t%10.1f\t%10.1f\t%10.1f\n', ...
     'Incr. gEEM', radius_incremental_gEEM(1), radius_incremental_gEEM(2), radius_incremental_gEEM(3), radius_incremental_gEEM(4));
 
-figure(1); 
-axis equal; 
-scatter3([direction_1(:,1);-direction_1(:,1)], [direction_1(:,2); -direction_1(:,2)], [direction_1(:,3); -direction_1(:,3)],size,'ro', 'filled'); hold on;
-scatter3([direction_2(:,1);-direction_2(:,1)], [direction_2(:,2); -direction_2(:,2)], [direction_2(:,3); -direction_2(:,3)],size,'go', 'filled'); hold on;
-scatter3([direction_3(:,1);-direction_3(:,1)], [direction_3(:,2); -direction_3(:,2)], [direction_3(:,3); -direction_3(:,3)],size,'bo', 'filled'); hold on;
-allDirection=[direction_1; -direction_1;direction_2; -direction_2; direction_3; -direction_3; ];
-DT=DelaunayTri(allDirection);
-tetramesh(DT, 'FaceColor', [0.8 0.8 0.8]); axis equal; 
+VisualizeMultiShellScheme(direction_1,direction_2,direction_3);
 title(['Incremental gEEM (combined covering radius=', num2str(radius_incremental_gEEM(4)), ')'], 'FontSize', 15);
-rotate3d
+
 
 % incremental CSC
 direction_1 = ReadDirections('28x3/directions_incrementalCSC_84_shell1.txt');
@@ -64,16 +57,9 @@ radius_incremental_CSC(4) = CoveringRadius([direction_1; direction_2; direction_
 fprintf('%20s\t%10.1f\t%10.1f\t%10.1f\t%10.1f\n', ...
     'Incr. CSC', radius_incremental_CSC(1), radius_incremental_CSC(2), radius_incremental_CSC(3), radius_incremental_CSC(4));
 
-figure(2); 
-axis equal; 
-scatter3([direction_1(:,1);-direction_1(:,1)], [direction_1(:,2); -direction_1(:,2)], [direction_1(:,3); -direction_1(:,3)],size,'ro', 'filled'); hold on;
-scatter3([direction_2(:,1);-direction_2(:,1)], [direction_2(:,2); -direction_2(:,2)], [direction_2(:,3); -direction_2(:,3)],size,'go', 'filled'); hold on;
-scatter3([direction_3(:,1);-direction_3(:,1)], [direction_3(:,2); -direction_3(:,2)], [direction_3(:,3); -direction_3(:,3)],size,'bo', 'filled'); hold on;
-allDirection=[direction_1; -direction_1;direction_2; -direction_2; direction_3; -direction_3; ];
-DT=DelaunayTri(allDirection);
-tetramesh(DT, 'FaceColor', [0.8 0.8 0.8]); axis equal; 
+VisualizeMultiShellScheme(direction_1,direction_2,direction_3);
 title(['Incremental CSC (combined covering radius=', num2str(radius_incremental_CSC(4)), ')'], 'FontSize', 15);
-rotate3d
+
 
 % MILP
 direction_1 = ReadDirections('28x3/directions_milp_84_shell1.txt');
@@ -117,16 +103,9 @@ fprintf('%20s\t%10.1f\t%10.1f\t%10.1f\t%10.1f\n', ...
 fprintf('%20s\t%10.1f\t%10.1f\t%10.1f\t%10.1f\n', ...
     'EEM (CAMINO)', radius_EEM_28, radius_EEM_28, radius_EEM_28, radius_EEM_84);
 
-figure(3); 
-axis equal; 
-scatter3([direction_1(:,1);-direction_1(:,1)], [direction_1(:,2); -direction_1(:,2)], [direction_1(:,3); -direction_1(:,3)],size,'ro', 'filled'); hold on;
-scatter3([direction_2(:,1);-direction_2(:,1)], [direction_2(:,2); -direction_2(:,2)], [direction_2(:,3); -direction_2(:,3)],size,'go', 'filled'); hold on;
-scatter3([direction_3(:,1);-direction_3(:,1)], [direction_3(:,2); -direction_3(:,2)], [direction_3(:,3); -direction_3(:,3)],size,'bo', 'filled'); hold on;
-allDirection=[direction_1; -direction_1;direction_2; -direction_2; direction_3; -direction_3; ];
-DT=DelaunayTri(allDirection);
-tetramesh(DT, 'FaceColor', [0.8 0.8 0.8]); axis equal; 
+
+VisualizeMultiShellScheme(direction_1,direction_2,direction_3);
 title(['MILP + Gradient descent (combined covering radius=', num2str(radius_milp_gradient(4)), ')'], 'FontSize', 15);
-rotate3d
 
 fprintf('\n')
 
